@@ -4,7 +4,9 @@
 
 
 
-un petit `git clone https://github.com/thp-grenobles8/s05.gossip.flo`
+lance les instruction suivantes
+ ```git clone https://github.com/thp-grenobles8/s05.gossip.flo```
+
 
 un petit `cd `dans le dossier, suivi d'un `bundle install`
 
