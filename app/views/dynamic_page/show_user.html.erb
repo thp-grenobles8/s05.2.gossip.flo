@@ -1,0 +1,13 @@
+<h1> <%= @user.first_name %> <%= @user.last_name %></h1>
+<h2> Description :</h2>
+  <p><%= @user.description %></p>
+<h3>Information complémentaire :</h3>
+  <p> Email : <%= @user.email %></p>
+  <p> Age : <%= @user.age %></p>
+  <p>Membre depuis <%= @user.created_at %></p>
+
+<h3>Ce membre a posté les potins :</h3>
+  <% @user.gossips.each do |gossip| %>
+  <p>Potin n°<%= gossip.id%> :</br>
+    A posté le potin : <%= link_to gossip.title, gossip_path(gossip.id)%></p>
+  <%end %>

@@ -1,0 +1,5 @@
+<h1>Potin n° <%= @id%></h1>
+<h2>Écrit par <%= link_to "#{@goss.user.first_name} #{@goss.user.last_name}", user_path(@goss.user.id) %>
+   le <%= @goss.created_at.strftime('%D')%> à <%= @goss.created_at.strftime('%T')%> </h2>
+<h3>Titre du potin : <%= @goss.title%></h3>
+<%= @goss.content %>

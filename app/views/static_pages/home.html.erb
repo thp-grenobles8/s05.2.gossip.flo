@@ -1,0 +1,16 @@
+<h1>Super page d'accueil</h1>
+<div class="card-columns">
+  <% @gossips.each_with_index do |gossip, index| %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">
+      <p>Potin n°<%= gossip.id%> :<br>
+        L'utilisateur : <%= link_to "#{gossip.user.first_name} #{gossip.user.last_name}", user_path(gossip.user.id) %>
+        </h5>
+        <p class="card-subtitle">
+        A posté le potin : <%= link_to gossip.title, gossip_path(gossip.id)%></p>
+      </p>
+    </div>
+  </div>
+  <%end %>
+</div>
