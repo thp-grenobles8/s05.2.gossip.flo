@@ -2,23 +2,16 @@
 
 ## use
 
-
-
 lance les instruction suivantes
- ```git clone https://github.com/thp-grenobles8/s05.gossip.flo```
-
-
-un petit `cd `dans le dossier, suivi d'un `bundle install`
-
-lance `rails db:create` puis `rails db:migrate` pour mettre toutes les migration en **up**
-tu peux relancer les seeds avec `rails db:seed`, de jolis **puts**
-te permettrons de suivre l'avancement du seed.
-
-après ça, joue avec le super site de potin en lançant la serveur `rails s`
-
-### FreeDoc
-
-application reliant des docteurs à des patients
+<ol>
+  <li>`git clone https://github.com/thp-grenobles8/s05.gossip.flo`
+  <li>`cd s05.gossip.flo` `bundle install`
+  <li>`rails db:create`
+  <li>`rails db:migrate` pour mettre toutes les migration en **up**
+  <li>`rails db:seed` pour générer des données aléatoires
+  <li>`rails s` pour lancer les serveur
+  <li> <a href="http://localhost:3000/ ">notre super site de potins</a>
+</ol>
 
 ## la team
 
