@@ -4,7 +4,7 @@
 
 lance les instruction suivantes
 <ol>
-  <li>`git clone https://github.com/thp-grenobles8/s05.gossip.flo`
+  <li>```git clone https://github.com/thp-grenobles8/s05.gossip.flo```
   <li>`cd s05.gossip.flo` `bundle install`
   <li>`rails db:create`
   <li>`rails db:migrate` pour mettre toutes les migration en **up**
