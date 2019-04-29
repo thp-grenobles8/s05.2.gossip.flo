@@ -1,24 +1,23 @@
-# README
+# semaine 5 jour 1 - Rails intermédiaire --Découverte de Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## use
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+un petit `git clone https://github.com/thp-grenobles8/s05.gossip.flo`
 
-* Configuration
+un petit `cd `dans le dossier, suivi d'un `bundle install`
 
-* Database creation
+lance `rails db:create` puis `rails db:migrate` pour mettre toutes les migration en **up**
+tu peux relancer les seeds avec `rails db:seed`, de jolis **puts**
+te permettrons de suivre l'avancement du seed.
 
-* Database initialization
+après ça, joue avec le super site de potin en lançant la serveur `rails s`
 
-* How to run the test suite
+### FreeDoc
 
-* Services (job queues, cache servers, search engines, etc.)
+application reliant des docteurs à des patients
 
-* Deployment instructions
+## la team
 
-* ...
+- Repo de <a href="https://thehackingproject.slack.com/messages/UHFNBN79D/">@Florian Chazot</a>
