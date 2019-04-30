@@ -11,6 +11,15 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://www.jacklmoore.com/colorbox/example1/colorbox.css" />
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
 
   </head>
 
@@ -31,24 +40,19 @@
       <li class="nav-item">
         <a class="nav-link" href="/contact">Nous contacter</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%=new_gossip_path%>">Créer un potin</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Potins
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% Gossip.all.each_with_index do |gossip, index| %>
-          <%= link_to "Potin n° #{gossip.id}", gossip_path(gossip.id)%></br>
+          <a class="dropdown-item" href="<%=gossip_path(gossip.id)%>">Potin n° <%=gossip.id%></a>
           <%end %>
+
         </div>
-      <!-- </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> -->
   </div>
 </nav>
 </header>

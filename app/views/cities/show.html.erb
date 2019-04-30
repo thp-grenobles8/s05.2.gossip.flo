@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>City page</title>
+  </head>
+  <body>
+
+    <main role="main">
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3"><%= @city.name %></h1>
+          <hr>
+          <hr>
+        </div>
+        <div class="container">
+          <h1 class="display-5">Dans cette ville, ont été postés les potins suivants :</h1>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <% @city.gossips.each do |gossip| %>
+          <div class="col-md-4">
+            <h2>Potin n°<%= gossip.id%> :</h2>
+            L'utilisateur : <%= link_to "#{gossip.user.first_name} #{gossip.user.last_name}", user_path(gossip.user.id) %><br>
+            A posté le potin : <%= link_to gossip.title, gossip_path(gossip.id)%>
+            <p><a class="btn btn-secondary" href="<%= gossip_path(gossip.id)%>" role="button">View details &raquo;</a></p>
+          </div>
+          <%end %>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

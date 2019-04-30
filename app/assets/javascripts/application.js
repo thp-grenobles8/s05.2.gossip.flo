@@ -14,3 +14,21 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://www.jacklmoore.com/colorbox/jquery.colorbox.js"></script>
+<script>
+  openColorBox();
+
+  function openColorBox(){
+    $.colorbox({
+      html:"Welcome!",
+      onLoad: function() {
+        $('#cboxClose').remove();
+        setTimeout(function(){
+          $(window).colorbox.close();
+        }, 3000)
+      }
+    });
+  }
+</script>

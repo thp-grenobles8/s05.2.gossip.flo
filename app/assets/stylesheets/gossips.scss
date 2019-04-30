@@ -1,0 +1,14 @@
+// Place all the styles related to the gossips controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form {
+  display : flex;
+  justify-content : flex-end;
+  flex-direction : column;
+  align-items:  center;
+}
+
+.form-item{
+  margin-bottom: 10px
+}

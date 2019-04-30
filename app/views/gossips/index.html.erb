@@ -27,7 +27,7 @@
           <div class="col-md-4">
             <h2>Potin n°<%= gossip.id%> :</h2>
             L'utilisateur : <%= link_to "#{gossip.user.first_name} #{gossip.user.last_name}", user_path(gossip.user.id) %><br>
-            A posté le potin : <%= link_to gossip.title, gossip_path(gossip.id)%>
+            A posté le potin :<%= link_to gossip.title, gossip_path(gossip.id)%>
             <p><a class="btn btn-secondary" href="<%= gossip_path(gossip.id)%>" role="button">View details &raquo;</a></p>
           </div>
           <%end %>

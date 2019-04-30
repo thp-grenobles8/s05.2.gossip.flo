@@ -14,7 +14,7 @@
  *= require_self
  */
 
- html {
+ /* html {
    font-family: Ubuntu, Calibri, sans-serif;
 
    min-height: 100%;
@@ -27,6 +27,7 @@
 body {
   background: linear-gradient(Fuchsia  0%, red 15%, orange 30%, yellow 45%, green 60%, DarkTurquoise  75%, blue 90%, DarkMagenta 100%);
 }
+
 .yield{
   margin: auto;
   max-width: 960px;
@@ -76,4 +77,4 @@ body {
  .card-body a{
    color: white;
    text-decoration: underline;
- }
+ } */
