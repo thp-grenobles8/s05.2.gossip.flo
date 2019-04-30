@@ -32,6 +32,9 @@
               <%= submit_tag "Mettre à jour le potin" %>
             </div>
 
+            <div class="form-item">
+              <%=select_tag "tag_id", options_from_collection_for_select(Tag.all, "id", "title"), include_blank: true%>
+            </div>
             <% end %>
           </div>
         </div>

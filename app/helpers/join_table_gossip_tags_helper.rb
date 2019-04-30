@@ -1,0 +1,2 @@
+module JoinTableGossipTagsHelper
+end

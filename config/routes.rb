@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :cities
   resources :comments
+  resources :join_table_gossip_tags
   # get 'gossip/:id', to: 'gossips#show', as: 'gossip'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

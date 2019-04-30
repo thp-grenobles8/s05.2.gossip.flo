@@ -10,6 +10,7 @@ class GossipsController < ApplicationController
       user_id: User.last.id
     )
     if @create_gossip.save
+      JoinTableGossipTag.create(tag_id: params[:tag_id], gossip: @create_gossip)
       flash[:notice] = "Post successfully created"
       redirect_to @create_gossip
     else
@@ -37,6 +38,7 @@ class GossipsController < ApplicationController
       title: params[:gossip_title],
       user_id: User.last.id
     )
+      JoinTableGossipTag.create(tag_id: params[:tag_id], gossip: @update_gossip)
       flash[:update_success] = " Le potin a bien été mis à jour !"
       redirect_to @update_gossip
     else
