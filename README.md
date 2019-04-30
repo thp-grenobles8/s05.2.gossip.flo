@@ -4,7 +4,7 @@
 
 lance les instruction suivantes
 
-`git clone https://github.com/thp-grenobles8/s05.gossip.flo`<br>
+`git clone https://github.com/thp-grenobles8/s05.2gossip.flo`<br>
 `cd s05.2.gossip.flo` <br>
 `bundle install`<br>
 `rails db:create`<br>
