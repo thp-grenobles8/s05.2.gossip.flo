@@ -78,3 +78,12 @@ body {
    color: white;
    text-decoration: underline;
  } */
+
+ .alert {
+   margin: auto;
+   width: 960px;
+ }
+
+.yield {
+  margin-bottom: 20px;
+}

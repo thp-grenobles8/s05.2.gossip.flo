@@ -12,21 +12,90 @@
       </button><strong>Success!</strong> <%= flash[:notice] %>
     </div>
     <% end %>
+    <% if flash[:update_success] %>
+    <div class='alert alert-success' role='alert'>
+      <strong>Success! </strong> <%= flash[:update_success] %>
+      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span class="close-button" aria-hidden='true'>&times</span>
+      </button>
+    </div>
+    <% end %>
+    <% if flash[:comment_online] %>
+    <div class='alert alert-success' role='alert'>
+      <strong>Success! </strong> <%= flash[:comment_online] %>
+      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span class="close-button" aria-hidden='true'>&times</span>
+      </button>
+    </div>
+    <% end %>
+    <% if flash[:warning_comment] %>
+    <div class='alert alert-danger' role='alert'>
+      <%= flash[:warning_comment] %>
+      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span class="close-button" aria-hidden='true'>&times</span>
+      </button>
+    </div>
+    <% end %>
+    <% if flash[:update_comment] %>
+    <div class='alert alert-success' role='alert'>
+      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+      </button><strong>Success!</strong> <%= flash[:update_comment] %>
+    </div>
+    <% end %>
+
+
     <main role="main">
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">Potin n° <%= @id%></h1>
+          <hr>
           <p> Écrit par <%= link_to "#{@goss.user.first_name} #{@goss.user.last_name}", user_path(@goss.user.id) %>
              le <%= @goss.created_at.strftime('%D')%> à <%= @goss.created_at.strftime('%T')%></p>
           <p>Le potin concerne la ville : <%= link_to @goss.user.city.name, city_path(@goss.user.city.id)%></p>
-
         </div>
         <div class="container">
-          <h1 class="display-5">Titre du potin : <%= @goss.title%></h1>
+          <h1 class="display-5">Titre du potin :  <%= @goss.title%> </h1>
+          <hr>
           <p><%= @goss.content %></p>
+          <hr>
+          <h4 class="display-5">Espace édition :</h4>
           <p><a class="btn btn-primary btn-lg" href="<%=edit_gossip_path(@goss.id)%>" role="button">Edit &raquo;</a></p>
+          <p><a
+            class="btn btn-primary btn-lg"
+            href="<%=gossip_path(@goss)%>"
+            rel="nofollow"
+            data-method="delete"
+            data-confirm="Es-tu sûr de vouloir supprimer le potin?"
+            role="button">Supprimer le potin &raquo;
+          </a></p>
+          <hr>
+          <h4 class="display-5">Espace commentaires :</h4>
+          <div class="container">
+            <div class="comment">
+              <%= form_tag url_for( controller: :comments, action: :create,id: @goss.id), method: "post" do %>
+              <div class="comment-item">
+                <%= text_area_tag 'comment_content', "Rédige ton commentaire" %>
+              </div>
+              <div class="comment-validation">
+                <%= submit_tag "Publier le commentaire" %>
+              </div>
+              <% end %>
+            </div>
+          </div>
         </div>
-
+      </div>
+      <div class="container">
+        <div class="row">
+          <% @goss.comments.each do |com| %>
+          <div class="col-md-4">
+            <h2>Commentaire de </h2>
+            <h3><%= link_to "#{com.author.first_name} #{com.author.last_name}" , user_path(com.author.id)%> </h3>
+            <%= com.content %>
+            <p><a class="btn btn-secondary" href="<%= edit_comment_path(com.id)%>" role="button">Éditer le commentaire &raquo;</a></p>
+          </div>
+          <%end %>
+        </div>
       </div>
     </main>
   </body>

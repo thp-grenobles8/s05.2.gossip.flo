@@ -1,7 +1,6 @@
 class GossipsController < ApplicationController
   def index
     @gossips = Gossip.all
-    #
   end
 
   def create
@@ -14,7 +13,7 @@ class GossipsController < ApplicationController
       flash[:notice] = "Post successfully created"
       redirect_to @create_gossip
     else
-      flash[:warning] = "Gossip don't created"
+      flash[:warning] = "Le potin n'a pas pu être créer"
       redirect_to new_gossip_path
     end
   end
@@ -38,14 +37,18 @@ class GossipsController < ApplicationController
       title: params[:gossip_title],
       user_id: User.last.id
     )
+      flash[:update_success] = " Le potin a bien été mis à jour !"
       redirect_to @update_gossip
     else
+      flash[:update_warning]
       render :edit
     end
   end
 
   def destroy
-    #
-    #
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    flash[:warning_delete] = "Le potin a été supprimé"
+    redirect_to gossips_path
   end
 end

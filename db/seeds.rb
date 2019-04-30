@@ -61,7 +61,6 @@ puts " ✔"
 
 print 'create Gossip'
 25.times do |index|
-  puts index
   Gossip.create(
     title: Faker::Book.title,
     content: Faker::Lorem.words(25).join(' ').capitalize,

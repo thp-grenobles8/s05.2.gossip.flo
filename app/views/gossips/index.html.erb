@@ -6,19 +6,20 @@
   </head>
   <body>
 
-    <div class='alert alert-success' role='alert'>
+    <% if flash[:warning_delete] %>
+    <div class='alert alert-warning' role='alert'>
+      <%= flash[:warning_delete] %>
       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
         <span aria-hidden='true'>&times;</span>
-      </button><strong>Success!</strong> You have been signed in successfully!
+      </button>
     </div>
-    <div class='alert alert-danger' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Success!</strong> You have been signed in successfully!</div>
+    <% end %>
+
 
     <main role="main">
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3">Super page d'accueil</h1>
-          <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+          <h1 class="display-3">La super page d'accueil de The Gossip Project</h1>
         </div>
       </div>
       <div class="container">
@@ -27,7 +28,8 @@
           <div class="col-md-4">
             <h2>Potin n°<%= gossip.id%> :</h2>
             L'utilisateur : <%= link_to "#{gossip.user.first_name} #{gossip.user.last_name}", user_path(gossip.user.id) %><br>
-            A posté le potin :<%= link_to gossip.title, gossip_path(gossip.id)%>
+            A posté le potin : <%= link_to gossip.title, gossip_path(gossip.id)%><br>
+            (Commentaires: <%= gossip.comments.length%>)
             <p><a class="btn btn-secondary" href="<%= gossip_path(gossip.id)%>" role="button">View details &raquo;</a></p>
           </div>
           <%end %>
@@ -36,22 +38,3 @@
     </main>
   </body>
 </html>
-
-
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://www.jacklmoore.com/colorbox/jquery.colorbox.js"></script>
-<script>
-  openColorBox();
-
-  function openColorBox(){
-    $.colorbox({
-      html:"<div class='alert alert-success' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Success!</strong> You have been signed in successfully!</div>",
-      onLoad: function() {
-        $('#cboxClose').remove();
-        setTimeout(function(){
-          $(window).colorbox.close();
-        }, 3000)
-      }
-    });
-  }
-</script> -->

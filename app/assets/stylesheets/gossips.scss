@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.form {
+.form-item {
   display : flex;
   justify-content : flex-end;
   flex-direction : column;
@@ -11,4 +11,12 @@
 
 .form-item{
   margin-bottom: 10px
+}
+
+.alert {
+  margin: auto;
+  width: 960px;
+}
+.comment-item {
+  margin-left: -15px;
 }

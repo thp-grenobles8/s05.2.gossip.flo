@@ -10,58 +10,31 @@
 
         </div>
         <div class="container">
+          <div class="form">
+
           <%= form_tag url_for(action: 'create'), method: "post" do %>
 
-          <%= label_tag 'Title' %>
-          <%= text_field_tag 'gossip_title', @post.title %>
-          <br /> <br />
+          <div class="form-item">
+            <%= label_tag 'Titre du nouveau Potin' %>
+            <%= text_field_tag 'gossip_title', @post.title %>
+          </div>
 
-          <%= label_tag 'Body' %>
-          <%= text_area_tag 'gossip_content', @post.content %>
-          <br /> <br />
+          <div class="form-item">
+            <%= label_tag 'Contenu du nouveau potin' %>
+            <%= text_area_tag 'gossip_content', @post.content %>
+          </div>
 
-          <%= label_tag 'Author' %>
-          <%= text_field_tag 'author', @post.user_id %>
-          <br /> <br />
+          <div class="form-item">
+            <%= label_tag 'Author' %>
+            <%= text_field_tag 'author', @post.user_id %>
+          </div>
 
-          <%= submit_tag "Create Post" %>
+          <div class="form-item">
+            <%= submit_tag "Créer le potin" %>
+          </div>
 
           <% end %>
         </div>
-
-        <form class="form" method="post" action="/gossips#create">
-          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-              <label for="title">Titre du Potin</label>
-              <input
-                class="form-item"
-                id="title"
-                name="gossip_title"
-                type="text"
-                value="<%= @post.title %>"
-              />
-
-              <label for="body">Contenu du potin</label>
-              <textarea
-                class="form-item"
-                id="body"
-                name="gossip_content"
-              ><%= @post.content %>
-              </textarea>
-
-              <label for="author">Auteur du potin</label>
-              <input
-                class="form-item"
-                id="author"
-                name="author"
-                type="text"
-                value=""
-              />
-
-              <input type="submit" value="Create Post" />
-
-        </form>
-
       </div>
     </main>
   </body>

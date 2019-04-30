@@ -5,69 +5,36 @@
         <div class="container">
           <h1 class="display-3">Ah mince, ce potin contient un erreur ?!?!?</h1>
           <h2 class="display-5">Heureusement que tu es là pour corriger ça  !!!</h2>
-
+          <hr>
 
         </div>
-        <div class="container form">
-          <%= form_tag url_for(action: 'update'), method: "patch" do %>
+        <div class="container">
+          <div class="form">
 
-          <div class="form_item">
-            <%= label_tag 'Title' %>
-            <%= text_field_tag 'gossip_title', @edit_goss.title %>
+            <%= form_tag url_for(action: 'update'), method: "patch" do %>
+
+            <div class="form-item">
+              <%= label_tag 'Titre du Potin' %>
+              <%= text_field_tag 'gossip_title', @edit_goss.title %>
+            </div>
+
+            <div class="form-item">
+              <%= label_tag 'Contenu du potin' %>
+              <%= text_area_tag 'gossip_content', @edit_goss.content %>
+            </div>
+
+            <div class="form-item">
+              <%= label_tag 'Auteur du potin' %>
+              <%= text_field_tag 'author', @edit_goss.user.last_name %>
+            </div>
+
+            <div class="form-item">
+              <%= submit_tag "Mettre à jour le potin" %>
+            </div>
+
+            <% end %>
           </div>
-
-          <div class="form_item">
-            <%= label_tag 'Body' %>
-            <%= text_area_tag 'gossip_content', @edit_goss.content %>
-          </div>
-
-          <div class="form_item">
-            <%= label_tag 'Author' %>
-            <%= text_field_tag 'author', @edit_goss.user.last_name %>
-          </div>
-
-          <div class="form_item">
-            <%= submit_tag "Create Post" %>
-          </div>
-
-          <% end %>
         </div>
-
-        <!-- <div class="container">
-          <form class="form" method="patch" action='/gossips#update'>
-            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-
-                <label for="title">Titre du Potin</label>
-                <input
-                  class="form-item"
-                  id="title"
-                  name="gossip_title"
-                  type="text"
-                  value="<%= @edit_goss.title %>"
-                />
-
-                <label for="body">Contenu du potin</label>
-                <textarea
-                  class="form-item"
-                  id="body"
-                  name="gossip_content"
-                ><%= @edit_goss.content %></textarea>
-
-                <label for="author">Auteur du potin</label>
-                <input
-                  class="form-item"
-                  id="author"
-                  name="author"
-                  type="text"
-                  value=""
-                />
-
-                <input type="submit" value="Create Post" />
-
-          </form>
-
-      </div> -->
 
 
       </div>
