@@ -53,6 +53,9 @@
       <li class="nav-item">
         <a class="nav-link my-2 my-lg-0" href="<%=new_user_path%>">Créer un compte</a>
       </li>
+      <li>
+        <%= link_to "Se déconnecter", session_path(session[:user_id]), method: :delete %>
+      </li>
     </ul>
 
   </div>
