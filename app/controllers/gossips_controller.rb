@@ -1,4 +1,7 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:new, :edit, :destroy]
+  before_action :user_is_author, only: [:edit, :destroy]
+
   def index
     @gossips = Gossip.all
   end
@@ -7,7 +10,7 @@ class GossipsController < ApplicationController
     @create_gossip = Gossip.new(
       content: params[:gossip_content],
       title: params[:gossip_title],
-      user_id: User.last.id
+      user: current_user
     )
     if @create_gossip.save
       JoinTableGossipTag.create(tag_id: params[:tag_id], gossip: @create_gossip)
@@ -28,6 +31,7 @@ class GossipsController < ApplicationController
   end
 
   def show
+    @is_liked = Like.find_by(gossip_id: params[:id], user: current_user) != nil
     @goss = Gossip.find(params['id'])
     @id = params['id']
   end
@@ -54,5 +58,20 @@ class GossipsController < ApplicationController
     redirect_to gossips_path
   end
 
+  private
+
+  def user_is_author
+    unless current_user == Gossip.find(params[:id]).user
+      flash[:not_author] = "Tu n'es pas l'auteur du potin"
+      redirect_to gossip_path(params[:id])
+    end
+  end
+
+  def authenticate_user
+    unless current_user
+      flash[:not_logged_in] = "Please log in."
+      redirect_to new_session_path
+    end
+  end
 
 end

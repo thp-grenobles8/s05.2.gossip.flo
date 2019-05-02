@@ -7,21 +7,28 @@
       </button> <%= flash[:warning_login] %>
     </div>
     <% end %>
+    <% if flash[:not_logged_in] %>
+    <div class='alert alert-danger' role='alert'>
+      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+      </button> <%= flash[:not_logged_in] %>
+    </div>
+    <% end %>
     <main role="main">
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3">Cool un nouveau membre !!!</h1>
+          <h1 class="display-3">Pas encore connecté(e) ?!?!?! <br> Mais qu'attends tu ? <i class="far fa-smile-wink"></i></h1>
         </div>
         <div class="container">
           <div class="form">
           <%= form_tag url_for(action: 'create'), method: "post" do %>
           <div class="form-item">
             <%= label_tag 'Email' %>
-            <%= text_field_tag 'login_email', 'email' %>
+            <%= text_field_tag 'login_email', nil, :placeholder => 'email' %>
           </div>
           <div class="form-item">
             <%= label_tag 'Mot de passe' %>
-            <%= text_field_tag 'login_password', 'Mot de passe' %>
+            <%= text_field_tag 'login_password', nil, :placeholder => 'Mot de passe' %>
           </div>
           <div class="form-item">
             <%= submit_tag "Connexion" %>

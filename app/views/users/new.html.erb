@@ -10,38 +10,28 @@
     <main role="main">
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3">Cool un nouveau membre !!!</h1>
+          <h1 class="display-3">Cool un nouveau membre !!!<i class="fas fa-heart"></i></h1>
 
         </div>
         <div class="container">
           <div class="form">
           <%= form_tag url_for(action: 'create'), method: "post" do %>
           <div class="form-item">
-            <%= label_tag 'Nom' %>
-            <%= text_field_tag 'user_last_name', @new_user.last_name %>
+            <%= text_field_tag 'user_name', nil, :placeholder => 'Prénom Nom' %>
           </div>
           <div class="form-item">
-            <%= label_tag 'Prénom' %>
-            <%= text_field_tag 'user_first_name', @new_user.first_name %>
+            <%= text_field_tag 'user_city', nil, :placeholder => 'ville' %>
           </div>
           <div class="form-item">
-            <%= label_tag 'Ville' %>
-            <%= text_field_tag 'user_city', 'city' %>
-          </div>
-          <div class="form-item">
-            <%= label_tag 'Email' %>
-            <%= text_field_tag 'user_email', "Email" %>
+            <%= text_field_tag 'user_email', nil, :placeholder => "Email" %>
           </div>
           <div class="form-item">
             <%= label_tag 'Mot de passe' %>
-            <%= text_field_tag 'password', 'Mot de passe' %>
+            <%= text_field_tag 'password', nil, :placeholder => 'Mot de passe' %>
           </div>
           <div class="form-item">
-            <%= label_tag 'Confirmation mot de passe' %>
-            <%= text_field_tag 'password_confirmation', 'Confirmation mot de passe' %>
+            <%= text_field_tag 'password_confirmation', nil, :placeholder => 'Confirmation mot de passe' %>
           </div>
-          <div class="form-item">
-            <%=select_tag "tag_id", options_from_collection_for_select(Tag.all, "id", "title"), include_blank: true%>
           </div>
           <div class="form-item">
             <%= submit_tag "Créer le compte" %>

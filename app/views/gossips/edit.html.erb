@@ -6,40 +6,27 @@
           <h1 class="display-3">Ah mince, ce potin contient un erreur ?!?!?</h1>
           <h2 class="display-5">Heureusement que tu es là pour corriger ça  !!!</h2>
           <hr>
-
         </div>
         <div class="container">
           <div class="form">
-
             <%= form_tag url_for(action: 'update'), method: "patch" do %>
-
             <div class="form-item">
               <%= label_tag 'Titre du Potin' %>
               <%= text_field_tag 'gossip_title', @edit_goss.title %>
             </div>
-
             <div class="form-item">
               <%= label_tag 'Contenu du potin' %>
               <%= text_area_tag 'gossip_content', @edit_goss.content %>
             </div>
-
-            <div class="form-item">
-              <%= label_tag 'Auteur du potin' %>
-              <%= text_field_tag 'author', @edit_goss.user.last_name %>
-            </div>
-
             <div class="form-item">
               <%= submit_tag "Mettre à jour le potin" %>
             </div>
-
             <div class="form-item">
               <%=select_tag "tag_id", options_from_collection_for_select(Tag.all, "id", "title"), include_blank: true%>
             </div>
             <% end %>
           </div>
         </div>
-
-
       </div>
     </main>
   </body>

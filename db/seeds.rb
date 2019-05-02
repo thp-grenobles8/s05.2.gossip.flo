@@ -54,7 +54,8 @@ print 'create User'
     description: Faker::Lorem.words(30).join(" ").capitalize,
     email: Faker::Internet.email,
     age: rand(20..40),
-    city: City.all.sample
+    city: City.all.sample,
+    password: "1234"
   )
 end
 puts " ✔"
@@ -122,18 +123,9 @@ puts " ✔"
 
 print 'create Like'
 20.times do |index|
-  is_gossip = [true, false].sample
-
-  if is_gossip
     Like.create(
       gossip: Gossip.all.sample,
       user: User.all.sample
     )
-  else
-    Like.create(
-      comment: Comment.all.sample,
-      user: User.all.sample
-    )
-  end
 end
 puts " ✔"

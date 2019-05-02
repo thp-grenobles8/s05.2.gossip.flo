@@ -14,70 +14,10 @@
  *= require_self
  */
 
- /* html {
-   font-family: Ubuntu, Calibri, sans-serif;
-
-   min-height: 100%;
- }
-
-.navbar-brand {
-  font-size : 2em !important;
-}
-
-body {
-  background: linear-gradient(Fuchsia  0%, red 15%, orange 30%, yellow 45%, green 60%, DarkTurquoise  75%, blue 90%, DarkMagenta 100%);
-}
-
-.yield{
-  margin: auto;
-  max-width: 960px;
-}
-
-.header {
-  max-width: 100%;
-}
- h2 {
-   font-weight: bolder !important;
-   margin:1em 0 !important;
- }
- h3 {
-
- }
-
- a {
-   font-weight: bold;
-   color: white !important;
- }
- a:hover {
-   font-weight: bold;
-   color: Blue !important;
-   text-decoration: none;
- }
-
- #nav a {
-   font-weight: bold;
-   color: Green !important;
- }
-
- #nav a:hover {
-   color: White !important;
-   background: Black;
-   font-weight: bolder;
-   text-decoration: none;
-   text-shadow: 1px 1px 2px #980;
- }
-
- .card {
-   box-shadow: 1px 1px 20px #872;
-   background-color: Black !important;
-   color: darkgrey;
-   /* padding: 1em; */
- }
-
  .card-body a{
    color: white;
    text-decoration: underline;
- } */
+ }
 
  .alert {
    margin: auto;
@@ -86,4 +26,41 @@ body {
 
 .yield {
   margin-bottom: 20px;
+}
+
+.title_gossip {
+  display : flex;
+  justify-content : space-between;
+}
+
+.fas, .far {
+  color: Red;
+}
+
+.fa-comment {
+  color: Darkblue;
+}
+
+
+.heart .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: Gainsboro;
+  color: Black;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid Darkgrey;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  margin-left: 10px;
+  margin-top: -10px;
+}
+
+.heart:hover .tooltiptext {
+  visibility: visible;
+}
+.heart_index{
+  padding-right: 60px;
 }

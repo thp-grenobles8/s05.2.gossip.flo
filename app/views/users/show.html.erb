@@ -35,8 +35,17 @@
         <div class="row">
           <% @user.gossips.each do |gossip| %>
           <div class="col-md-4">
-            <h2>Potin n°<%= gossip.id%> :</h2>
-              <p>A posté le potin : <%= link_to gossip.title, gossip_path(gossip.id)%></p>
+            <div class="title_gossip">
+              <h2>Potin n°<%= gossip.id%> :</h2>
+              <% if session[:user_id]%>
+                <% if like = is_like?(gossip.id)%>
+                  <h2><a class=" heart heart_index" href="<%= gossip_like_path(gossip_id: gossip.id, id: like.id)  %>" role="button" data-method="delete"><i class="fas fa-heart"></i><span class="tooltiptext">J'aime déjà</span></a></h2>
+                <% else %>
+                  <h2><a class=" heart heart_index" href="<%= gossip_likes_path(gossip.id) %>" role="button" data-method="create"><i class="fas fa-heart-broken"></i><span class="tooltiptext">Aimer ce potin</span></a></h2>
+                <% end %>
+              <% end %>
+            </div>
+            <p>A posté le potin : <%= link_to gossip.title, gossip_path(gossip.id)%></p>
           </div>
           <%end %>
         </div>

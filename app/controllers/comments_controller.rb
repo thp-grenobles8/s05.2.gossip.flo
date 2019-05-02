@@ -1,13 +1,10 @@
 class CommentsController < ApplicationController
-  def new
-  end
-
-  def index
-  end
+  before_action :authenticate_user, only: [:create, :edit, :destroy]
+  before_action :user_is_author, only: [:edit, :destroy]
 
   def create
     @create_comment = Comment.new(
-      author: User.all.sample,
+      author: current_user,
       gossip: Gossip.find_by_id(params[:id]),
       content: params[:comment_content]
     )
@@ -43,6 +40,19 @@ class CommentsController < ApplicationController
     @edit_comm = Comment.find(params['id'])
   end
 
-  def show
+  private
+
+  def user_is_author
+    unless current_user == Comment.find(params[:id]).author
+      flash[:not_author] = "Tu n'es pas l'auteur du commenntaire"
+      redirect_to gossip_path(params[:gossip_id])
+    end
+  end
+
+  def authenticate_user
+    unless current_user
+      flash[:not_logged_in] = "Please log in."
+      redirect_to new_session_path
+    end
   end
 end

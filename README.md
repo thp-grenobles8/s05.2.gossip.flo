@@ -1,8 +1,8 @@
-# semaine 5 jour 2-3 - Rails intermédiaire --Découverte de Rails
+# semaine 5 jour 2-4 - Rails intermédiaire --Découverte de Rails
 
 ## use
 
-lance les instruction suivantes
+Lance les instruction suivantes
 
 `git clone https://github.com/thp-grenobles8/s05.2gossip.flo`<br>
 `cd s05.2.gossip.flo` <br>
@@ -16,4 +16,4 @@ lance les instruction suivantes
 
 ## la team
 
-- Repo de <a href="https://thehackingproject.slack.com/messages/UHFNBN79D/">@Florian Chazot</a>
+- Repo de @Florian Chazot

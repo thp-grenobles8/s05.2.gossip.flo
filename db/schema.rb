@@ -59,18 +59,11 @@ ActiveRecord::Schema.define(version: 2019_05_02_083220) do
     t.index ["recipient_id"], name: "index_join_table_private_message_users_on_recipient_id"
   end
 
-  create_table "join_table_user_gossips", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "gossip_id"
-    t.bigint "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_likes_on_comment_id"
     t.index ["gossip_id"], name: "index_likes_on_gossip_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end

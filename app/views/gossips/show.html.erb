@@ -48,7 +48,14 @@
     <div class='alert alert-success' role='alert'>
       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
         <span aria-hidden='true'>&times;</span>
-      </button><strong>Success!</strong> <%= flash[:update_comment] %>
+      </button><strong>Success!</strong> <% flash[:update_comment] %>
+    </div>
+    <% end %>
+    <% if flash[:not_author] %>
+    <div class='alert alert-danger' role='alert'>
+      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span aria-hidden='true'>&times;</span>
+      </button> <%= flash[:not_author] %>
     </div>
     <% end %>
 
@@ -56,7 +63,20 @@
     <main role="main">
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3">Potin n° <%= @id%></h1>
+          <div class="title_gossip">
+            <h1 class="display-3">
+              Potin n° <%= @id%>
+            </h1>
+            <h1 class="display-3 heart">
+              <% if session[:user_id]%>
+                <% if like = is_like?(@goss)%>
+                  <a href="<%= gossip_like_path(gossip_id: @goss.id, id: like.id)  %>" role="button" data-method="delete"><i class="fas fa-heart"></i></a><span class="tooltiptext">J'aime déjà</span>
+                <% else %>
+                  <a href="<%= gossip_likes_path(@goss.id) %>" role="button" data-method="create"><i class="fas fa-heart-broken"></i></a><span class="tooltiptext">Aimer ce potin</span>
+                <% end %>
+              <% end %>
+            </h1>
+          </div>
           <hr>
           <p> Écrit par <%= link_to "#{@goss.user.first_name} #{@goss.user.last_name}", user_path(@goss.user.id) %>
              le <%= @goss.created_at.strftime('%D')%> à <%= @goss.created_at.strftime('%T')%></p>
@@ -73,17 +93,19 @@
           <%end %>
           </ul>
           <hr>
-          <h4 class="display-5">Espace édition :</h4>
-          <p><a class="btn btn-primary btn-lg" href="<%=edit_gossip_path(@goss.id)%>" role="button">Edit &raquo;</a></p>
-          <p><a
-            class="btn btn-primary btn-lg"
-            href="<%=gossip_path(@goss.id)%>"
-            rel="nofollow"
-            data-method="delete"
-            data-confirm="Es-tu sûr de vouloir supprimer le potin?"
-            role="button">Supprimer le potin &raquo;
-          </a></p>
-          <hr>
+          <% if current_user == @goss.user%>
+            <h4 class="display-5">Espace édition :</h4>
+            <p><a class="btn btn-primary btn-lg" href="<%=edit_gossip_path(@goss.id)%>" role="button">Edit &raquo;</a></p>
+            <p><a
+              class="btn btn-primary btn-lg"
+              href="<%=gossip_path(@goss.id)%>"
+              rel="nofollow"
+              data-method="delete"
+              data-confirm="Es-tu sûr de vouloir supprimer le potin?"
+              role="button">Supprimer le potin &raquo;
+            </a></p>
+            <hr>
+          <% end %>
           <h4 class="display-5">Espace commentaires :</h4>
           <div class="container">
             <div class="comment">
@@ -106,7 +128,9 @@
             <h2>Commentaire de </h2>
             <h3><%= link_to "#{com.author.first_name} #{com.author.last_name}" , user_path(com.author.id)%> </h3>
             <%= com.content %>
-            <p><a class="btn btn-secondary" href="<%= edit_gossip_comment_path(:id => com.id, gossip_id: params[:id])%>" role="button">Éditer le commentaire &raquo;</a></p>
+            <% if current_user == com.author%>
+              <p><a class="btn btn-secondary" href="<%= edit_gossip_comment_path(:id => com.id, gossip_id: params[:id])%>" role="button">Éditer le commentaire &raquo;</a></p>
+            <%end %>
           </div>
           <%end %>
         </div>

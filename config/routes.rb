@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   resources :users
   resources :cities
   resources :gossips do
-    resources :comments
+    resources :comments, only: [:create, :destroy, :update, :edit]
+    resources :likes, only: [:create, :destroy]
   end
-  resources :join_table_gossip_tags
   resources :sessions, only: [:new, :create, :destroy]
 end
