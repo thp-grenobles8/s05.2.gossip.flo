@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  # get 'user/:id', to: 'dynamic_page#show_user', as: 'user'
+  # get 'sessions/new'
+  # get 'sessions/create'
+  # get 'sessions/destroy'
   root 'gossips#index'
   get '/welcome/:first_name', to: 'static_pages#welcome'
   get '/contact', to: 'static_pages#contact'
@@ -10,6 +12,5 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :join_table_gossip_tags
-  # get 'gossip/:id', to: 'gossips#show', as: 'gossip'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :sessions, only: [:new, :create, :destroy]
 end
