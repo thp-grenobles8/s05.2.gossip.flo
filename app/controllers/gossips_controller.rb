@@ -42,8 +42,8 @@ class GossipsController < ApplicationController
       flash[:update_success] = " Le potin a bien été mis à jour !"
       redirect_to @update_gossip
     else
-      flash[:update_warning]
-      render :edit
+      flash[:update_warning] = " Le potin n'a pas pu être mis à jour !"
+      redirect_to @update_gossip
     end
   end
 
@@ -53,4 +53,6 @@ class GossipsController < ApplicationController
     flash[:warning_delete] = "Le potin a été supprimé"
     redirect_to gossips_path
   end
+
+
 end

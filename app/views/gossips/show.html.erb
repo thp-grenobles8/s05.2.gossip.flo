@@ -36,6 +36,14 @@
       </button>
     </div>
     <% end %>
+    <% if flash[:update_warning] %>
+    <div class='alert alert-danger' role='alert'>
+      <%= flash[:update_warning] %>
+      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        <span class="close-button" aria-hidden='true'>&times</span>
+      </button>
+    </div>
+    <% end %>
     <% if flash[:update_comment] %>
     <div class='alert alert-success' role='alert'>
       <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -69,7 +77,7 @@
           <p><a class="btn btn-primary btn-lg" href="<%=edit_gossip_path(@goss.id)%>" role="button">Edit &raquo;</a></p>
           <p><a
             class="btn btn-primary btn-lg"
-            href="<%=gossip_path(@goss)%>"
+            href="<%=gossip_path(@goss.id)%>"
             rel="nofollow"
             data-method="delete"
             data-confirm="Es-tu sûr de vouloir supprimer le potin?"
@@ -79,7 +87,7 @@
           <h4 class="display-5">Espace commentaires :</h4>
           <div class="container">
             <div class="comment">
-              <%= form_tag url_for( controller: :comments, action: :create,id: @goss.id), method: "post" do %>
+              <%= form_tag url_for(:controller => 'comments', :action => 'create', :id => @goss.id, gossip_id: params[:id]), method: "post" do %>
               <div class="comment-item">
                 <%= text_area_tag 'comment_content', "Rédige ton commentaire" %>
               </div>
@@ -98,7 +106,7 @@
             <h2>Commentaire de </h2>
             <h3><%= link_to "#{com.author.first_name} #{com.author.last_name}" , user_path(com.author.id)%> </h3>
             <%= com.content %>
-            <p><a class="btn btn-secondary" href="<%= edit_comment_path(com.id)%>" role="button">Éditer le commentaire &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="<%= edit_gossip_comment_path(:id => com.id, gossip_id: params[:id])%>" role="button">Éditer le commentaire &raquo;</a></p>
           </div>
           <%end %>
         </div>

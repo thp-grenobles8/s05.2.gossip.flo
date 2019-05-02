@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     )
     if @create_comment.save
       flash[:comment_online] = "Le commentaire a été publié"
-      redirect_to @create_comment.gossip
+      redirect_to gossip_path(params[:id])
     else
       flash[:warning_comment] = "Le commentaire n'a pas pu être publié"
       redirect_to @create_comment.gossip

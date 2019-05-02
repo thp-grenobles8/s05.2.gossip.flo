@@ -36,11 +36,11 @@
         </div>
         <p><a
           class="btn btn-danger btn-lg"
-          href="<%=comment_path(@edit_comm)%>"
+          href="<%=gossip_comment_path(id: @edit_comm, gossip_id: @edit_comm.gossip.id)%>"
           rel="nofollow"
           data-method="delete"
           data-confirm="Es-tu sûr de vouloir supprimer le commentaire?"
-          role="button">Supprimer le potin &raquo;
+          role="button">Supprimer le commentaire &raquo;
         </a></p>
 
 
