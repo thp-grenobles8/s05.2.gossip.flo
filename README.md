@@ -12,7 +12,8 @@ Lance les instruction suivantes
 `rails db:seed` pour générer des données aléatoires<br>
 `rails s` pour lancer les serveur<br>
  <a href="http://localhost:3000/ ">notre super site de potins</a>
-
+si tu veux te connecter avec le compte d'un utilisateur, tous les mots de passes sont : 1234 <br>
+récupère l'adresse mail sur la page d'un utilisateur et navigue en temps qu'utilisateur connecté
 
 ## la team
 

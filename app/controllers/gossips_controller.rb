@@ -39,8 +39,7 @@ class GossipsController < ApplicationController
   def update
     @update_gossip = Gossip.find(params[:id])
     if @update_gossip.update(content: params[:gossip_content],
-      title: params[:gossip_title],
-      user_id: User.last.id
+      title: params[:gossip_title]
     )
       JoinTableGossipTag.create(tag_id: params[:tag_id], gossip: @update_gossip)
       flash[:update_success] = " Le potin a bien été mis à jour !"
