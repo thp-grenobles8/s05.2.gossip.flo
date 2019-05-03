@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       redirect_to @create_user
     else
       flash[:warning_create_user] = "Le compte n'a pas pu être créer"
-        @gossip.errors.full_messages.each do |message|
+        @create_user.errors.full_messages.each do |message|
           puts message
         end
       redirect_to new_user_path
